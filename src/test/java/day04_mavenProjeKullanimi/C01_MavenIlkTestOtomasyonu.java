@@ -1,10 +1,14 @@
 package day04_mavenProjeKullanimi;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import utilies.ReusableMethods;
 
 import java.time.Duration;
+import java.util.List;
 
 public class C01_MavenIlkTestOtomasyonu {
 
@@ -17,12 +21,28 @@ public class C01_MavenIlkTestOtomasyonu {
         // testotomasyonu anasayfaya gidin
         driver.get("https://www.testotomasyonu.com");
 
-
         // phone icin arama yapin
-
+        WebElement aramaKutusu = driver.findElement(By.id("global-search"));
+        aramaKutusu.sendKeys("phone" + Keys.ENTER);
 
         // arama sonucunda urun bulunabildigini test edin
+        WebElement urunYaziElementi = driver.findElement(By.xpath("//span[text()='4 Products Found']"));
+        String sonucSayisiStr = urunYaziElementi.getText();
+        sonucSayisiStr = sonucSayisiStr.replaceAll("\\D", "");
+        int urunSayisi = Integer.parseInt(sonucSayisiStr);
 
+        if (urunSayisi > 0) {
+            System.out.println("Urun arama testi PASSED");
+        } else System.out.println("Urun arama testi FAILED");
+
+
+        /* 2. yontem
+        List<WebElement> bulunanUrunElementleriList = driver.findElements(By.className("prod-img"));
+
+        if (bulunanUrunElementleriList.size() > 0) {
+            System.out.println("Urun arama testi PASSED");
+        } else System.out.println("Urun arama testi FAILED");
+        */
 
         // sayfayi kapatin
         ReusableMethods.bekle(3);
