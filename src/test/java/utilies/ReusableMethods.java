@@ -1,5 +1,10 @@
 package utilies;
 
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReusableMethods {
 
     public static void bekle(int saniye) {
@@ -12,4 +17,16 @@ public class ReusableMethods {
 
     }
 
+    public static List<String> stringListeyeDonustur(List<WebElement> webElementList) {
+
+        List<String> tumListeStr = new ArrayList<>();
+
+        for (WebElement eachBaslik : webElementList) {
+            tumListeStr.add(eachBaslik.getText());
+        }
+
+        return tumListeStr;
+    }
+
 }
+

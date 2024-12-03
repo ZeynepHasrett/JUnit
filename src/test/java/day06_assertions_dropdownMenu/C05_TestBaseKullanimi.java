@@ -1,6 +1,10 @@
 package day06_assertions_dropdownMenu;
 
-public class C05_TestBaseKullanimi {
+import org.junit.jupiter.api.Test;
+import utilies.ReusableMethods;
+import utilies.TestBaseEach;
+
+public class C05_TestBaseKullanimi extends TestBaseEach {
 
     /*
         Java'da OOP koncept'in en buyuk avantaji REUSABILITY' dir
@@ -17,6 +21,10 @@ public class C05_TestBaseKullanimi {
         before ve after method'larini o class'a koyabiliriz
      */
 
-
+    @Test
+    public void test01() {
+        driver.get("https://www.testotomasyonu.com");
+        ReusableMethods.bekle(1);
+    }
 
 }
