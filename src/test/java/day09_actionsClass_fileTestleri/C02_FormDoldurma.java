@@ -23,6 +23,7 @@ public class C02_FormDoldurma extends TestBaseEach {
 
         //3- Sign Up linkine basalim
         Actions actions = new Actions(driver);
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
         WebElement signUpButonElementi = driver.findElement(By.xpath("//*[@*='sign-up ']"));
@@ -33,7 +34,19 @@ public class C02_FormDoldurma extends TestBaseEach {
         // ve Sign Up butonuna basalim
         WebElement firstNameButonu = driver.findElement(By.xpath("//*[@id='firstName']"));
 
-        firstNameButonu.sendKeys("Nazli" + Keys.TAB + "Can" + Keys.TAB + "nazlican@gmail.com" + Keys.TAB + "12345" + Keys.TAB + "12345");
+        Actions actions1 = new Actions(driver);
+        ReusableMethods.bekle(1);
+
+        actions1.click(firstNameButonu)
+                .sendKeys("Nazli")
+                .sendKeys(Keys.TAB)
+                .sendKeys("Can")
+                .sendKeys(Keys.TAB)
+                .sendKeys("nazli@gmail.com")
+                .sendKeys(Keys.TAB)
+                .sendKeys("12345")
+                .sendKeys(Keys.TAB)
+                .sendKeys("12345").perform();
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
@@ -43,7 +56,7 @@ public class C02_FormDoldurma extends TestBaseEach {
         //5- Kaydin olusturuldugunu test edin
         WebElement emailElementi = driver.findElement(By.xpath("//*[@id='email']"));
 
-        emailElementi.sendKeys("nazlican@gmail.com" + Keys.TAB + "12345");
+        emailElementi.sendKeys("nazli@gmail.com" + Keys.TAB + "12345");
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
@@ -54,6 +67,11 @@ public class C02_FormDoldurma extends TestBaseEach {
 
         Assertions.assertTrue(logOutButonElementi.isDisplayed());
 
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        logOutButonElementi.click();
+
     }
 
 }
+
