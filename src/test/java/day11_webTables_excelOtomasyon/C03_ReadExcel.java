@@ -12,7 +12,7 @@ public class C03_ReadExcel {
     @Test
     public void test01() throws IOException {
 
-        // Exce'deki bilgileri kullanabilmek icin
+        // Excel'deki bilgileri kullanabilmek icin
         // once Excel'deki datalara ulasmamiz lazim
         // bilgisayarimizdaki dosyaya Selenium WebDriver ile ulasamayacagimiz icin
         // Java'dan yardim istemeliyiz
@@ -38,6 +38,7 @@ public class C03_ReadExcel {
         // index kullanir
         // index 0'dan basladigi icin
         // 5.satir icin index ==> 4, 3.hucre icin index ==> 2 secilmelidir
+
         Sheet sheet1 = workbook.getSheet("Sayfa1");
 
         Row row = sheet1.getRow(4);
@@ -50,13 +51,13 @@ public class C03_ReadExcel {
         // Sayfa1'deki 15.satir 2.hucrede olan bilgiyi yazdirin
         System.out.println(workbook.getSheet("Sayfa1").getRow(14).getCell(1));
 
-
         // son satir numarasini yazdirin
-
-
+        System.out.println(workbook.getSheet("Sayfa1").getLastRowNum()); // 190
+        // bu son satirin index'idir
+        System.out.println("Son satir no : " + (workbook.getSheet("Sayfa1").getLastRowNum() + 1)); // 191
 
         // Kullanilan satir sayisini yazdirin
-
+        System.out.println(workbook.getSheet("Sayfa1").getPhysicalNumberOfRows());
 
     }
 
