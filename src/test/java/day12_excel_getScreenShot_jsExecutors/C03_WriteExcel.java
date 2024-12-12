@@ -63,11 +63,11 @@ public class C03_WriteExcel {
             excel'e kaydetme islemi yapmadan once
             excel dosyasinin kapali oldugundan emin olmalisiniz
          */
-        fileInputStream.close();
         FileOutputStream fileOutputStream = new FileOutputStream(dosyaYolu);
         workbook.write(fileOutputStream);
 
         // 8)Dosyayi kapatalim
+        fileInputStream.close();
         fileOutputStream.close();
         workbook.close();
 
